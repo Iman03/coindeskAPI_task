@@ -33,6 +33,7 @@ class CoinDeskApiControllerTest {
 
     @Test
     @Order(1)
+    // 測試取得CoinDeskAPI
     void getCoinDeskAPI() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/coinDeskAPI");
@@ -46,6 +47,7 @@ class CoinDeskApiControllerTest {
 
     @Test
     @Order(2)
+    // 測試transformCoinDeskAPI
     void transformCoinDeskAPI() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/transformCoinDeskAPI");
@@ -60,6 +62,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(3)
+    // 測試取得全部Currency
     void getCurrencys() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/currencys");
@@ -75,6 +78,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(4)
+    // 測試取得單一 Currency 成功
     void getCurrency_Success() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/currencys/{id}", 1);
@@ -89,6 +93,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(5)
+    // 測試取得單一 Currency 失敗
     void getCurrency_NotFound() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/currencys/{id}", 200);
@@ -100,6 +105,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(6)
+    // 測試創建 Currency 成功
     void createCurrency_Success() throws Exception {
         Currency currency = new Currency();
         currency.setCurrencyName("USD");
@@ -124,6 +130,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(7)
+    // 測試創建 Currency 失敗
     void createCurrency_Fail() throws Exception {
         Currency currency = new Currency();
 
@@ -142,6 +149,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(8)
+    // 測試更新 Currency 成功
     void updateCurrency_Success() throws Exception {
         Currency updateCurrency = new Currency();
         updateCurrency.setCurrencyName("USD_test");
@@ -169,6 +177,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(9)
+    // 測試更新 Currency 失敗
     void updateCurrency_Fail() throws Exception {
         Currency updateCurrency = new Currency();
         updateCurrency.setCurrencyName("");
@@ -188,6 +197,7 @@ class CoinDeskApiControllerTest {
     @Transactional
     @Test
     @Order(10)
+    // 測試刪除 Currency
     void deleteCurrency() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .delete("/currencys/{id}", 1);

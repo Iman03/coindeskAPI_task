@@ -41,7 +41,6 @@ public class CoinDeskApiController {
 
         CoinDeskAPI coinDeskAPI = new CoinDeskAPI();
         CoinDeskAPI.Time time = new CoinDeskAPI.Time();
-        List<CoinDeskAPI.APICurrency> currencyList = new ArrayList<>();
         Map<String, CoinDeskAPI.APICurrency> currencyMap = new HashMap<>();
         time.setUpdated(timeNode.path("updated").asText());
         time.setUpdatedISO(timeNode.path("updatedISO").asText());
@@ -64,7 +63,7 @@ public class CoinDeskApiController {
 
     //呼叫 coindesk API，進行資料轉換，組成新 API
     @GetMapping("/transformCoinDeskAPI")
-    public CurrencyResponse transformCoinDeskAPI() throws JsonProcessingException, ParseException {
+    public CurrencyResponse transformCoinDeskAPI() throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(URL, String.class);
         ObjectMapper mapper = new ObjectMapper();
